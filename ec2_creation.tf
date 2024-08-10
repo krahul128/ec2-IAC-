@@ -1,15 +1,16 @@
+#BLOCK TO CREATE KEY_PAIR
 resource "aws_key_pair" "my_key_pair" {
   key_name   = "terra-key"
   public_key = file("H:\\DEVOPS\\Terraform\\ec2\\keys\\terra-key.pub")
 }
 
 
-
+#BLOCK TO CREATE DEFAULT_VPC
 resource "aws_default_vpc" "default" {
   
 }
 
-
+#BLOCK TO CREATE SECURITY_GROUP
 resource "aws_security_group" "my_security_group" {
   name= "my_security_group"
   vpc_id = aws_default_vpc.default.id
@@ -33,7 +34,7 @@ resource "aws_security_group" "my_security_group" {
  }
   
 }
-
+#BLOCK TO CREATE EC2_INSTANCE
 resource "aws_instance" "my_demo_instance" {
   # count = 3 (this is called as meta arguments it will create 3 instances of same type)
   # for each (this is called as meta arguments it will create instance of other type)
